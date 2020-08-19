@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <!-- 第一步,先导入vuejs -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+<body>
+    <div id="app">
+        <a href="">{{username}}</a>
+        <hr>
+        <!-- <a href="[[home]]">[[username]]</a>  错误写法-->
+        <a v-bind:href="home">[[message]]</a>
+        <hr>
+        <span v-if='OK'>用户名太受欢迎了</span>
+        <span v-show='show'>用户名太受欢迎了............</span>
+        <hr>
+
+        <button v-on:click='count+=1'>增加 </button>
+        <p>count的值是[[count]]</p>
+        <hr>
+        <button v-on:click='wwww'>警告</button>
+        <hr>
+        <button v-on:click='login(count)'>tongji</button>   
+        <hr>
+        <ul>
+            <li v-for="(a,b) in person">[[b]].....[[a]]</li>
+        </ul> 
+        <hr>
+        <ul>
+            <li v-for="a in friends">[[a.name]]....[[a.address]]</li>
+        </ul>
+        <hr>
+        <input type="text" name="todo" v-model="todo"> 
+        <button v-on:click='showw'>tianjia</button>
+        <ur>
+            <li v-for="item in todos">[[item]] </li>
+        </ur>
+    </div>
+</body>
+<script type="text/javascript">
+
+	var app = new Vue({
+		el: '#app',		
+        delimiters: ["[[","]]"],
+		data: {		    
+			message: 'itcast',		
+            home: 'http://www.baidu.com',
+            OK: true,
+            show: true,
+            count: 0,
+            todo: '',
+            todos: [],
+            person: {
+                name: 'admin',
+                address: 'qwe',
+                phone: '13456798'
+            },
+            friends: [
+                {
+                name: 'adminnn',
+                address: 'qweeee',
+            },
+            {
+                name: 'adminnn123',
+                address: 'qweeee123',
+            }
+            ]
+		},
+        methods: {
+			wwww: function(){
+				alert('警告')
+			},
+            login: function(ccc){
+                alert(ccc)
+            },
+            showw: function(){
+			
+				this.todos.push(this.todo)
+				
+			}
+            
+        }
+	})
+</script>
+</html>
